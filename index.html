@@ -31,7 +31,7 @@
                 grid-row: 1
             }
 
-            .main-nav {
+            .nav-column {
                 grid-row: 2 / 8
             }
             .content {
@@ -48,7 +48,7 @@
             }
 
             .header-content {
-                grid-column: col-start 5 / span 8;
+                grid-column: col-start 4 / span 9;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -62,10 +62,16 @@
             }
 
             .logo {
+                border: 1px solid black;
                display: none;
             }
 
+            .title {
+                border: 1px solid black;
+            }
+
             .login {
+                border: 1px solid black;
                 display: none;
             }
 
@@ -75,7 +81,7 @@
                 }
 
                 .logo {
-                    grid-column: col-start 1 / span 4;
+                    grid-column: col-start 1 / span 3;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -87,23 +93,33 @@
                 
                 .content { 
                     display: block !important;
-                    grid-column: col-start 5 / span 8;
+                    grid-column: col-start 4 / span 9;
                     grid-row: 2 / 8;
                 }
                 .main-footer {
-                    display: block;
-                    grid-column: col-start 5 / span 8;
+                    display: flex;
+                    grid-column: col-start 4 / span 9;
+                    flex-direction: row-reverse;
+                    justify-items: flex-end;
+                    align-items: flex-end;
                 }
-                .main-nav {
+                .nav-column {
                     display: block !important;
-                    grid-column: col-start 1 / span 4;
+                    grid-column: col-start 1 / span 3;
                     grid-row: 2 / 9;
+                }
+
+                .main-nav {
+                    max-width: 18rem;
+                    height: 100%;
+                    border: 1px solid black;
                 }
                 nav ul {
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
                 }
+            
             }
         </style>
     </head>
@@ -129,18 +145,22 @@
                     </div>
                 </div>
             </header>
-            <nav class="main-nav visible">
-                <ul>
-                    <li><a href="">Nav 1</a></li>
-                    <li><a href="">Nav 2</a></li>
-                    <li><a href="">Nav 3</a></li>
-                </ul>
-            </nav>
+            <div class="nav-column visible">
+                <nav class="main-nav ">
+                    <ul>
+                        <li><a href="">Nav 1</a></li>
+                        <li><a href="">Nav 2</a></li>
+                        <li><a href="">Nav 3</a></li>
+                    </ul>
+                </nav>
+            </div>
             <article class="content visible">
                 <h1>Content</h1>
                 <p>Lots of useful data</p>
             </article> 
-            <footer class="main-footer visible">The footer</footer>
+            <footer class="main-footer visible">
+                <span class="main-footer__content">&copy;Curtis Bainbridge 2020</span>
+            </footer>
         </div>
         <script>
             function toggleNav() {
@@ -159,7 +179,7 @@
                 
             }
 
-            let nav = document.querySelector('.main-nav')
+            let nav = document.querySelector('.nav-column')
             let content = document.querySelector('.content')
             let isOpen = true
 
