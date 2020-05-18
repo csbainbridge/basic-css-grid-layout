@@ -86,7 +86,7 @@
                 }
                 
                 .content { 
-                    display: block;
+                    display: block !important;
                     grid-column: col-start 5 / span 8;
                     grid-row: 2 / 8;
                 }
@@ -95,7 +95,7 @@
                     grid-column: col-start 5 / span 8;
                 }
                 .main-nav {
-                    display: block;
+                    display: block !important;
                     grid-column: col-start 1 / span 4;
                     grid-row: 2 / 9;
                 }
@@ -142,5 +142,28 @@
             </article> 
             <footer class="main-footer visible">The footer</footer>
         </div>
+        <script>
+            function toggleNav() {
+                if (isOpen) {
+                    nav.style.display = 'none'
+                    content.style.gridColumn = ''
+                    content.style.gridRow = '2 / 8'
+                    content.style.display = 'block'
+                    isOpen = false
+                } else {
+                    nav.style.display = 'block'
+
+                    content.style.display = 'none'
+                    isOpen = true
+                }
+                
+            }
+
+            let nav = document.querySelector('.main-nav')
+            let content = document.querySelector('.content')
+            let isOpen = true
+
+            document.querySelector('.hamburger').addEventListener('click', toggleNav)
+        </script>
     </body>
 </html>
